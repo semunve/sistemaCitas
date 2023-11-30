@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="formulario.css">
+  <link rel="shortcut icon" href="/img/dentistry.png">
+</head>
+<body>
+    <header>
+        <img src="/img/dentistry.png" alt="">
+       <h1>MedacDent</h1>
+   </header>
+    
+    <button id="inicio"><a href="/inicio/index.html">Volver a inicio</a></button>
+    <h1>Formulario de citas</h1>
+    
+    <form id="form">
+        <input type="text" id="nombre" placeholder="Nombre del paciente" required>
+        <br>
+        <input type="text" id="apellido" placeholder="Apellidos" required>
+        <br>
+        <input type="number" id="dni" placeholder="DNI" required>
+        <br>
+        <input type="number" id="telefono" placeholder="Numero de teléfono" required>
+        <br><br>
+        <label for="">Fecha de nacimiento</label>
+        <br>
+        <input type="date" id="nacimiento" placeholder="Fecha de nacimiento" required>
+        <br><br>
+        <label for="">Día de cita</label>
+        
+        <input type="date" id="fecha"  required>
+        <label for="">Hora</label>
+        <input type="time" name="" id="hora">
+        <br><br>
+        <textarea placeholder="Observaciones" id="area" style="height: 50px; width: 250px;"></textarea>
+         <br>
+        <button type="submit" id="guardarCita" onclick="añadir()">Guardar Cita</button>
+        
+    </form>
+<br>
+<div style="text-align: center;">
+    <table style="max-width: 600px; margin:0 auto;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Teléfono</th>
+                <th>Fecha de nacimiento</th>
+                <th>Fecha de cita</th>
+                <th>Hora</th>
+                <th>Observaciones</th>
+                <th>Acciones</th>
+           
+            </tr>
+        </thead>
+        <tbody id="citasTable">
+            <!-- Aquí se generarán las filas de la tabla  -->
+        </tbody>
+    </table>
+</div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
