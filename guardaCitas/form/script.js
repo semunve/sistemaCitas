@@ -1,6 +1,7 @@
-
-        //Envío del formulario
+//Envío del formulario
         function añadir(){
+
+           // const citasGuardadas=JSON.parse(localStorage.getItem("citas")) || [];
             document.getElementById("form")
             const nombre = document.getElementById("nombre").value;
             const apellido=document.getElementById("apellido").value
@@ -22,9 +23,9 @@
                 alert("Por favor, complete todos los campos.");
                 return;
             }
-            if(!/^[0-9]+$/.test(dni)){
-                alert("El DNI deben ser solo numeros")
-               return;
+            if (!/^\[0-9]{8}[A-Za-z]{1}$/.test(dni)) {
+                alert("El DNI debe contener 8 números seguidos de una letra");
+                return;
             }
 
             // objeto cita con los datos ingresados
@@ -48,13 +49,12 @@
             // Guardar las citas en localStorage con setItem
             localStorage.setItem("citas", JSON.stringify(citasGuardadas));
 
-             // Obtener las citas existentes desde localStorage con getItem
-            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) ;
+                cargarCitas();
         };
 
  // Función para cargar y mostrar las citas desde localStorage
  function cargarCitas() {
-            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) ;
+            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) || [] ;
             const citasTable = document.getElementById("citasTable");
              citasTable.innerHTML="";
             if (citasGuardadas.length === 0) {
@@ -84,10 +84,8 @@
             }
         }
 
-
-
-function editarCita(index) {
-            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) ;
+      function editarCita(index) {
+            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) ||[] ;
             const cita = citasGuardadas[index];
 
             if (cita) {
@@ -131,13 +129,13 @@ function editarCita(index) {
                 alert("Por favor, complete todos los campos.");
                 return;
             }
-            if (!/^[0-9]+$/.test(dni)) {
-                alert("El DNI deben ser solo numeros");
+            if (!/^[0-9]{8}[A-Za-z]{1}$/.test(dni)){
+                alert("El DNI debe contener 8 números seguidos de una letra");
                 return;
             }
 
             // Obtener las citas existentes desde localStorage
-            const citasGuardadas = JSON.parse(localStorage.getItem("citas")) ;
+            const citasGuardadas = JSON.parse(localStorage.getItem("citas"))  ||[];
 
             // Obtener el índice almacenado en el atributo data-index del botón Guardar Cita
             const index = document.getElementById("guardarCita").getAttribute("data-index");
@@ -184,9 +182,6 @@ function editarCita(index) {
             // Recargar la tabla de citas
             cargarCitas();
         }
-
-
-
 
        // Función para eliminar una cita
 function eliminarCita(index) {
